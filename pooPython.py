@@ -83,13 +83,46 @@ class Screwdriver:
         """Representation de l'objet"""
         return f"Tournevis de taille {self.size}"
 
+class Nail:
+    """Clou"""
 
-clou = Screw()
-clou.tighten()
-clou.tighten()
-clou1 =clou.__str__()
-print(clou1)
+    def __init__(self):
+        """Initialise son status dans le mur """
+        self.in_wall = False
+
+    def nail_in(self):
+        """Enfonce le clou dans le mur"""
+        if not self.in_wall:
+            self.in_wall = True
+
+    def remove(self):
+        """enleve le clou dans le mur"""
+        if self.in_wall:
+            self.in_wall = False
+
+    def __str__(self):
+        """Retoune une forme lisible de l'objet"""
+        wall_state = "dans le mur" if self.in_wall else "hors du mur"
+        return f"clou {wall_state}"
+
+
+# operations sur les outils
+vis1 = Screw()
+vis1.tighten()
+vis1.tighten()
+pres_vis1 =vis1.__str__()
+print(pres_vis1)
+
+clou1 = Nail()
+pres_clou1 = clou1.__str__()
+print(pres_clou1)
+
+marteau1 = Hammer(color="yellow")
+pres_marteau1 = marteau1.__repr__()
+print(pres_marteau1)
 
 tool = ToolBox()
-boite1 = tool.add_tool(clou.tightness)
-print(boite1)
+tool.add_tool(pres_vis1)
+tool.add_tool(pres_clou1)
+tool.add_tool(marteau1)
+print(tool.__dict__)
