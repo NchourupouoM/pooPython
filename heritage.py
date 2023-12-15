@@ -45,6 +45,8 @@ class User:
 
 class Moderator(User):
     """Utilisateur moderateur"""
+    def __init__(self,username,password):
+        super().__init__(username,password)
 
     def edit(self,post,content):
         """Modifie un message"""
@@ -110,8 +112,12 @@ class Thread:
 file1 = File(name="image palais royale foumban",size="23'")
 user1 = User(username="Mohamed",password="1234")
 user2 = User(username="Ibrahim",password="pass")
+moderateur1 = Moderator(username="Mohamed",password="123")
 post1 = Post(user=user1,time_posted="15/12/2023",content="le cameroun a l'aire de l'ia")
 postfile1 = Filepost(user=user2,time_posted="14/12/2023",content="Le cameroun a l'aire de l'ia",file=file1)
 fil_dis1 = Thread(title="file de discution 1",time_posted="aujourd'hui",posts=post1)
 print(fil_dis1.display())
+print(postfile1.display())
+print("-------------Modefication--------------")
+moderateur1.edit(post=post1,content="Le cameroun dans le tiere monde")
 print(postfile1.display())
