@@ -107,22 +107,30 @@ class Nail:
 
 
 # operations sur les outils
-vis1 = Screw()
-vis1.tighten()
-vis1.tighten()
-pres_vis1 =vis1.__str__()
-print(pres_vis1)
+"""Essayez d’accomplir les actions suivantes :
 
-clou1 = Nail()
-pres_clou1 = clou1.__str__()
-print(pres_clou1)
+1- Instanciez une boîte à outils, un tournevis, et un marteau.
+2- Placez le marteau et le tournevis dans la boîte à outils.
+3- Instanciez une vis, et serrez-la avec le tournevis. Affichez la vis avant et après avoir été serrée.
+4- Instanciez un clou, puis enfoncez-le avec le marteau. Affichez le clou avant et après avoir été enfoncé."""
+
+tournevis1 = Screwdriver(size=4)
+
+vis1 = Screw()
+print("avant de visser: ",vis1.__str__())
+tournevis1.tighten(vis1)
+print("Apres avoir visser: ",vis1.__str__())
 
 marteau1 = Hammer(color="yellow")
-pres_marteau1 = marteau1.__repr__()
-print(pres_marteau1)
+
+clou1 = Nail()
+print("Avant de taper: ",clou1.__str__())
+marteau1.hammer_in(clou1)
+print("Apres avoir taper: ", clou1.__str__())
+
 
 tool = ToolBox()
-tool.add_tool(pres_vis1)
-tool.add_tool(pres_clou1)
 tool.add_tool(marteau1)
+tool.add_tool(tournevis1)
+
 print(tool.__dict__)
