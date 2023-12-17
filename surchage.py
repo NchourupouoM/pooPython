@@ -10,8 +10,29 @@ class File:
 
 class Imagefile(File):
     """fichier image"""
-    pass
+    def __init__(self, name, size):
+        super().__init__(name, size)
 
+class ImageJPG(Imagefile):
+    """Image de type JPG"""
+    def __init__(self, name, size):
+        super().__init__(name, size)
+        
+    """surchage la methode display()"""
+    def display(self,type):
+        super().display()
+        print("cette image est de type JPG")
+
+class ImageGIF(Imagefile):
+    """Image de type GIF"""
+
+    def __init__(self,name,size):
+        super().__init__(name,size)
+
+    """surchage de la methode display()"""
+    def display(self):
+        super().display()
+        print("cette image est de type GIF")
 
 class User:
     """Utilisateur"""
